@@ -9,7 +9,7 @@ const selectRawCounterState = (componentId: string) => createSelector(
 
 const selectCounterState = (componentId: string) => createSelector(
   selectRawCounterState(componentId),
-  state => state ?? fromCounter.getInitialCounterState(componentId),
+  state => state || fromCounter.getInitialCounterState(componentId),
 );
 
 export const selectCounterValue = (componentId: string) => createSelector(
