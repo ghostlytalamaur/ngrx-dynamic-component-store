@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { CounterModule } from './counter/counter.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { EffectsModule } from '@ngrx/effects';
   imports: [
     BrowserModule,
     StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    CounterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
