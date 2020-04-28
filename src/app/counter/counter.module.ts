@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CounterContainerComponent } from './counter-container/counter-container.component';
 import { StoreModule } from '@ngrx/store';
-import { featureKey, reducer } from './store';
+import { CounterEffects, featureKey, reducer } from './store';
+import { EffectsModule } from '@ngrx/effects';
 
 
 
@@ -14,6 +15,7 @@ import { featureKey, reducer } from './store';
   imports: [
     CommonModule,
     StoreModule.forFeature(featureKey, reducer),
+    EffectsModule.forFeature([CounterEffects]),
   ]
 })
 export class CounterModule { }

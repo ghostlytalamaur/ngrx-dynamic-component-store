@@ -5,11 +5,26 @@ export function isComponentAction(action: Action): action is Action & { componen
 }
 
 export const increment = createAction(
-  'Increment Value',
+  '[Counter] Increment Value',
   props<{ componentId: string; }>(),
 );
 
 export const decrement = createAction(
-  'Decrement Value',
+  '[Counter] Decrement Value',
+  props<{ componentId: string; }>(),
+)
+
+export const startAutoIncrement = createAction(
+  '[Counter] Auto Increment Value Start',
+  props<{ componentId: string; }>(),
+);
+
+export const autoIncrementStarted = createAction(
+  '[Counter] Auto Increment Started',
+  props<{ componentId: string; }>(),
+);
+
+export const stopAutoIncrement = createAction(
+  '[Counter] Stop Auto Increment Value',
   props<{ componentId: string; }>(),
 )

@@ -14,19 +14,28 @@ export class CounterContainerComponent implements OnInit {
 
   public value$: Observable<number>;
 
-  constructor(
+  public constructor(
     private readonly store: Store,
-  ) { }
+  ) {
+  }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.value$ = this.store.select(selectCounterValue(this.componentId));
   }
 
-  onIncrement() {
+  public onIncrement(): void {
     this.store.dispatch(CounterActions.increment({ componentId: this.componentId }));
   }
 
-  onDecrement() {
+  public onDecrement(): void {
     this.store.dispatch(CounterActions.decrement({ componentId: this.componentId }));
+  }
+
+  public onStartAutoIncrement(): void {
+    this.store.dispatch(CounterActions.startAutoIncrement({ componentId: this.componentId }));
+  }
+
+  public onStopAutoIncrement(): void {
+    this.store.dispatch(CounterActions.stopAutoIncrement({ componentId: this.componentId }));
   }
 }

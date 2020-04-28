@@ -7,6 +7,7 @@ export const featureKey = 'counter';
 export interface CounterState {
   id: string;
   value: number;
+  isAutoIncrementStarted: boolean;
 }
 
 export interface State extends EntityState<CounterState> {
@@ -18,6 +19,7 @@ export function getInitialCounterState(id: string): CounterState {
   return {
     id,
     value: 0,
+    isAutoIncrementStarted: false,
   };
 }
 
@@ -30,7 +32,15 @@ const counterReducer = createReducer(
   on(Actions.decrement, state => ({
     ...state,
     value: state.value - 1,
-  }))
+  })),
+  on(Actions.autoIncrementStarted, state => ({
+    ...state,
+    isAutoIncrementStarted: true,
+  })),
+  on(Actions.stopAutoIncrement, state => ({
+    ...state,
+    isAutoIncrementStarted: false,
+  })),
 );
 
 export function reducer(state: State = initialState, action: Action): State {
@@ -41,6 +51,7 @@ export function reducer(state: State = initialState, action: Action): State {
     }
     return adapter.upsertOne(counterReducer(counterState, action), state);
   }
+  // here we may call counterReducer for each created CounterState if needed.
 
   return state;
 }

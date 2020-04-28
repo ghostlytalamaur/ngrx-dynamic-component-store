@@ -16,3 +16,8 @@ export const selectCounterValue = (componentId: string) => createSelector(
   selectCounterState(componentId),
   state => state.value,
 );
+
+export const selectIsAutoIncrementStarted = (componentId: string) => createSelector(
+  selectCounterState(componentId),
+  state => state.isAutoIncrementStarted,
+)
